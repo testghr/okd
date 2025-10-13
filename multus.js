@@ -15,11 +15,11 @@ app2.get('/', (req, res) => {
 });
 
 // Start the first server on address 127.0.0.1:3000
-app1.listen(3000, '127.0.0.1', () => {
+app1.listen(3000, '0.0.0.0', () => {
     console.log('Server 1 running at http://127.0.0.1:3000/');
 });
 
 // Start the second server on address 127.0.0.2:3001
 //app2.listen(3001, '127.0.0.2', () => {
- /   console.log('Server 2 running at http://127.0.0.2:3001/');
+//   console.log('Server 2 running at http://127.0.0.2:3001/');
 //});
