@@ -26,7 +26,7 @@ if (!address) {
 
 const ifaceName2 = 'net1'; // or 'en0', 'wlan0', etc.
 const interfaces2 = os.networkInterfaces();
-const iface2 = interfaces[ifaceName];
+const iface2 = interfaces2[ifaceName2];
 
 if (!iface2) {
   console.error(`Interface ${ifaceName} not found`);
