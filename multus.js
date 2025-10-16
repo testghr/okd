@@ -19,6 +19,28 @@ if (!address) {
   process.exit(1);
 }
 
+
+
+
+
+
+const ifaceName2 = 'net1'; // or 'en0', 'wlan0', etc.
+const interfaces2 = os.networkInterfaces();
+const iface2 = interfaces[ifaceName];
+
+if (!iface2) {
+  console.error(`Interface ${ifaceName} not found`);
+  process.exit(1);
+}
+
+// Find the first IPv4 address (not internal)
+const address2 = iface.find(details => details.family === 'IPv4' && !details.internal);
+
+if (!address2) {
+  console.error(`No suitable IPv4 address found for interface ${ifaceName}`);
+  process.exit(1);
+}
+
 // Create two instances of express
 const app1 = express();
 const app2 = express();
@@ -34,6 +56,7 @@ app2.get('/', (req, res) => {
 });
 
 console.log(address.address);
+console.log(address2.address);
 
 // Start the first server on address 127.0.0.1:3000
 app1.listen(3000, address.address, () => {
@@ -41,6 +64,6 @@ app1.listen(3000, address.address, () => {
 });
 
 // Start the second server on address 127.0.0.2:3001
-//app2.listen(3001, '127.0.0.2', () => {
-//   console.log('Server 2 running at http://127.0.0.2:3001/');
-//});
+app2.listen(3001, address2.address, () => {
+   console.log('Server 2 running at http://127.0.0.2:3001/');
+});
