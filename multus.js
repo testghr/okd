@@ -34,7 +34,7 @@ if (!iface2) {
 }
 
 // Find the first IPv4 address (not internal)
-const address2 = iface.find(details => details.family === 'IPv4' && !details.internal);
+const address2 = iface2.find(details => details.family === 'IPv4' && !details.internal);
 
 if (!address2) {
   console.error(`No suitable IPv4 address found for interface ${ifaceName}`);
