@@ -13,8 +13,6 @@ RUN npm install
 RUN apt update
 RUN apt install -y iproute2 iputils-ping tcpdump sngrep curl wget net-tools nano
 
-RUN nano test.cfg
-
 # Copy the rest of the application code
 COPY . .
 
