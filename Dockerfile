@@ -1,5 +1,5 @@
 # Use the official Node.js image as the base image
-FROM node:18
+FROM node:25-bullseye
 
 # Set the working directory in the container
 WORKDIR /usr/src/app
@@ -9,6 +9,9 @@ COPY package*.json ./
 
 # Install dependencies
 RUN npm install
+
+RUN apt update
+RUN apt install -y iproute2 iputils-ping tcpdump sngrep curl wget net-tools
 
 # Copy the rest of the application code
 COPY . .
